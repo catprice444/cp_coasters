@@ -8,15 +8,19 @@ class CpCoasters::CLI
   def rollercoasters
     puts ""
     puts "Which Rollercoaster would you like to learn more about? Enter a number between 1-18."
-      @all = CpCoasters::Coasters.all_rides
-      @all
+      @rides = CpCoasters::Coasters.all_rides
+      @rides.each.with_index(1) do |ride, i|
+        puts "#{i}. #{ride.name}"
+      end
 
     input = gets.strip
-    @ride = CpCoasters::Coasters.indiv_ride_list
-    @ride.each do |ride|
+    indiv_ride = @rides[input.to_i-1]
+    # @ride = CpCoasters::Coasters.indiv_ride_list
+    # @ride.each do |ride|
       puts ""
-      puts "#{ride.name}, #{ride.speed}, #{ride.description}"
-    end
+      puts "#{ride.name}"
+      puts "#{ride.min_height}, #{ride.speed}, #{ride.description}"
+    # end
 
     puts ""
     puts "Are you finished looking at rollercoasters? Enter 'yes' or 'no'."
