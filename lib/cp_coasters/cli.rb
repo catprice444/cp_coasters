@@ -15,12 +15,10 @@ class CpCoasters::CLI
 
     input = gets.strip
     indiv_ride = @rides[input.to_i-1]
-    # @ride = CpCoasters::Coasters.indiv_ride_list
-    # @ride.each do |ride|
       puts ""
-      puts "#{ride.name}"
-      puts "#{ride.min_height}, #{ride.speed}, #{ride.description}"
-    # end
+      puts "#{indiv_ride.name}"
+      puts "#{indiv_ride.min_height}, #{indiv_ride.speed}, #{indiv_ride.description}"
+    
 
     puts ""
     puts "Are you finished looking at rollercoasters? Enter 'yes' or 'no'."
