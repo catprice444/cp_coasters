@@ -16,9 +16,14 @@ class CpCoasters::CLI
     input = gets.strip
     indiv_ride = @rides[input.to_i-1]
       puts ""
-      puts "#{indiv_ride.name}"
-      puts "#{indiv_ride.min_height}, #{indiv_ride.speed}, #{indiv_ride.description}"
-    
+      puts "Name:           #{indiv_ride.name}"
+      puts "Min height:     #{indiv_ride.min_height} inches"
+      puts "Speed:          #{indiv_ride.speed} mph"
+      puts "Duration:       #{indiv_ride.duration} minutes"
+      puts ""
+      puts "Description:"
+      puts "#{indiv_ride.description}"
+
 
     puts ""
     puts "Are you finished looking at rollercoasters? Enter 'yes' or 'no'."
@@ -35,5 +40,7 @@ class CpCoasters::CLI
         puts "Sorry I don't understand"
         rollercoasters
       end
+
   end
+
 end
