@@ -6,5 +6,4 @@ class CpCoasters::Scraper
   def indiv_rollercoaster
   end
 
-  
 end

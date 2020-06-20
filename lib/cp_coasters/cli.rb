@@ -9,14 +9,15 @@ class CpCoasters::CLI
     puts ""
     puts "Which Rollercoaster would you like to learn more about? Enter a number between 1-18."
     input = gets.strip
+    @ride = CpCoasters::Coasters.ride_list
 
-    if input == "1"
-      puts "The First coaster"
-    elsif input == "2"
-      puts "The Second coaster"
-    else
-      puts "Sorry I don't understand"
-    end
+    # if input == "1"
+    #   puts "The First coaster"
+    # elsif input == "2"
+    #   puts "The Second coaster"
+    # else
+    #   puts "Sorry I don't understand"
+    # end
 
     puts ""
     puts "Are you finished looking at rollercoasters? Enter 'yes' or 'no'."
