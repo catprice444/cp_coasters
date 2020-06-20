@@ -1,12 +1,11 @@
 class CpCoasters::CLI
 
   def call
-    list
-    selection
+    puts "Welcome to Cedar Park!"
+    rollercoasters
   end
 
-  def list
-    puts "Welcome to Cedar Park!"
+  def rollercoasters
     puts "Which Rollercoaster would you like to learn more about?
     1. Blue Streak
     2. Mine Ride"
