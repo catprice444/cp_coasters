@@ -1,5 +1,5 @@
 class CpCoasters::Coasters
-  attr_accessor :name, :description, :min_height, :speed, :duration
+  attr_accessor :name, :description, :min_height, :speed, :duration, :url
 
   # def self.all_rides
   #   # self.scrape_all

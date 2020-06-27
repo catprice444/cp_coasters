@@ -1,14 +1,20 @@
-# require 'nokogiri'
-# require 'open-uri'
-
 class CpCoasters::Scraper
-  attr_accessor :name, :description, :min_height, :speed, :duration
+  attr_accessor :name, :description, :min_height, :speed, :duration, :url
 
 
   def self.all_rides
-    doc = Nokogiri::HTML(open("https://www.cedarpoint.com/play/rides-coasters"))
+    all = []
 
+
+    kennywood = Nokogiri::HTML(open("https://www.kennywood.com/attractions"))
+    name = kennywood.css("div.pcore2_tile_copy").css("h2").text
+    min_height = kennywood.css("div.pcore2_tile_copy").css("i").text
     binding.pry
+    # From the main page-
+    #   Need to get name and indiv url
+
+    # From the profile url-
+    #   Need to get name, description, min_height, speed, duration
 
 
     # all = []
@@ -21,8 +27,8 @@ class CpCoasters::Scraper
   end
 
 
-  # def self.indiv_coaster
-  # end
+  def self.indiv_coaster
+  end
 
 
   # def self.coasters
