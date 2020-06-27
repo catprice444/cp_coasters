@@ -32,33 +32,33 @@ class CpCoasters::Coasters
     #   puts "Description:"
     #   puts "#{indiv_ride.description}"
 
-
-    puts ""
-    puts "Are you finished looking at rollercoasters? Enter 'yes' or 'no'."
-    input = gets.strip.downcase
-
-      if input == "no"
-        rollercoasters
-      elsif input == "yes"
-        puts ""
-        puts "Enjoy your stay at Cedar Park!!"
-        exit
-      else
-        puts ""
-        puts "Sorry I don't understand"
-        rollercoasters
-      end
+    #
+    # puts ""
+    # puts "Are you finished looking at rollercoasters? Enter 'yes' or 'no'."
+    # input = gets.strip.downcase
+    #
+    #   if input == "no"
+    #     rollercoasters
+    #   elsif input == "yes"
+    #     puts ""
+    #     puts "Enjoy your stay at Cedar Park!!"
+    #     exit
+    #   else
+    #     puts ""
+    #     puts "Sorry I don't understand"
+    #     rollercoasters
+    #   end
 
   end
-
-  def self.scrape_all
-    all = []
-    # all << self.coasters
-    all << self.first_coaster
-    all << self.second_coaster
-
-    all
-  end
+  #
+  # def self.scrape_all
+  #   all = []
+  #   # all << self.coasters
+  #   all << self.first_coaster
+  #   all << self.second_coaster
+  #
+  #   all
+  # end
 
 
   # def self.coasters
