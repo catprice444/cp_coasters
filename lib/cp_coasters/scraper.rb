@@ -1,61 +1,42 @@
 class CpCoasters::Scraper
-  attr_accessor :name, :description, :min_height, :thrill_level, :disclaimer, :attributes, :vip_tours, :random, :information
+  attr_accessor :name, :description, :height, :thrill_level, :disclaimer, :attributes, :random, :information
 
 
   def self.all_rides
-    # all = []
 
+    indiv_ride = Nokogiri::HTML(open("https://www.kennywood.com/aero-360"))
 
-    kennywood = Nokogiri::HTML(open("https://www.kennywood.com/attractions"))
+    all = {}
+    indiv_ride.css("div.default_button").each do |info|
+      if info.css("title_attribute").text.include?("Minimum")
+        all[:min_height] = info.css("title_value")
 
-
-    attributes = kennywood.css("div.pcore_tiles_attribicons")
-    information = attributes.css("div")
-
-    information.each do |info|
-      min_height = info[1]
-      thrill_level = info[2]
-      vip_tours = info[3]
-        binding.pry
+      elsif info.css("title_attribute").text.include?("Thrill")
+        all[:thrill_level] = info.css("title_value")
+      else
+        all[:vip_tours] = info.css("title_value").text
+    
+      end
+      all
     end
 
 
-    # disclaimer = kennywood.css("div.pcore2_tile_copy").css("i").text
-    # description = kennywood.css("div.pcore2_tile_copy").css("p").text
-    # name = kennywood.css("div.pcore2_tile_copy").css("h2").text
+
+
+binding.pry
+
+    end
 
 
 
 
 
 
-    #   Need to get name, description, min_height
 
 
-    # all = []
-    #
-    #   all << self.first_coaster
-    #   all << self.second_coaster
-    #
-    #   all
-
-  end
 
 
-  def self.indiv_coaster
-  end
 
-
-  # def self.coasters
-    # coaster = self.new
-    # coaster.name =
-    # coaster.speed =
-    # coaster.description =
-    # coaster.min_height =
-    # coaster.duration =
-
-    # coaster
-  # end
 
   # def self.first_coaster
   #   first_coaster = self.new

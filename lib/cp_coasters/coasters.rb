@@ -21,16 +21,16 @@ class CpCoasters::Coasters
       #   puts "#{i}. #{ride.name}"
       # end
 
-    input = gets.strip
-    indiv_ride = @rides[input.to_i-1]
-      puts ""
-      puts "Name:           #{indiv_ride.name}"
-      puts "Min height:     #{indiv_ride.min_height} inches"
-      puts "Speed:          #{indiv_ride.speed} mph"
-      puts "Duration:       #{indiv_ride.duration} minutes"
-      puts ""
-      puts "Description:"
-      puts "#{indiv_ride.description}"
+    # input = gets.strip
+    # indiv_ride = @rides[input.to_i-1]
+    #   puts ""
+    #   puts "Name:           #{indiv_ride.name}"
+    #   puts "Min height:     #{indiv_ride.min_height} inches"
+    #   puts "Speed:          #{indiv_ride.speed} mph"
+    #   puts "Duration:       #{indiv_ride.duration} minutes"
+    #   puts ""
+    #   puts "Description:"
+    #   puts "#{indiv_ride.description}"
 
 
     puts ""
