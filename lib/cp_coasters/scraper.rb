@@ -1,20 +1,35 @@
 class CpCoasters::Scraper
-  attr_accessor :name, :description, :min_height, :speed, :duration, :url
+  attr_accessor :name, :description, :min_height, :thrill_level, :disclaimer, :attributes, :vip_tours, :random, :information
 
 
   def self.all_rides
-    all = []
+    # all = []
 
 
     kennywood = Nokogiri::HTML(open("https://www.kennywood.com/attractions"))
-    name = kennywood.css("div.pcore2_tile_copy").css("h2").text
-    min_height = kennywood.css("div.pcore2_tile_copy").css("i").text
-    binding.pry
-    # From the main page-
-    #   Need to get name and indiv url
 
-    # From the profile url-
-    #   Need to get name, description, min_height, speed, duration
+
+    attributes = kennywood.css("div.pcore_tiles_attribicons")
+    information = attributes.css("div")
+
+    information.each do |info|
+      min_height = info[1]
+      thrill_level = info[2]
+      vip_tours = info[3]
+        binding.pry
+    end
+
+
+    # disclaimer = kennywood.css("div.pcore2_tile_copy").css("i").text
+    # description = kennywood.css("div.pcore2_tile_copy").css("p").text
+    # name = kennywood.css("div.pcore2_tile_copy").css("h2").text
+
+
+
+
+
+
+    #   Need to get name, description, min_height
 
 
     # all = []
