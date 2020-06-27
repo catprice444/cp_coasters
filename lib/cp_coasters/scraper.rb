@@ -1,10 +1,23 @@
 class CpCoasters::Scraper
-  attr_accessor :name, :description, :height, :thrill_level, :disclaimer, :attributes, :random, :information
+  attr_accessor :name, :short_description, :disclaimer, :url, :min_height, :thrill_level, :slogan
 
+  # first page = name, short description, disclaimer, url
+  # second page = min_height, thrill_level, slogan
 
-  def self.all_rides
+  def self.first_page
 
-    indiv_ride = Nokogiri::HTML(open("https://www.kennywood.com/aero-360"))
+    kennywood = Nokogiri::HTML(open("https://www.kennywood.com/attractions"))
+
+    disclaimer = kennywood.css("div.pcore2_tile_copy").css("i").text
+    short_description = kennywood.css("div.pcore2_tile_copy").css("p").text
+    name = kennywood.css("div.pcore2_tile_copy").css("h2").text
+    url =
+
+  end
+
+  def self.second_page(url)
+
+    indiv_ride = Nokogiri::HTML(open("url"))
 
     all = {}
     indiv_ride.css("div.default_button").each do |info|
@@ -13,50 +26,17 @@ class CpCoasters::Scraper
 
       elsif info.css("span.title_attribute").text.include?("Thrill Level")
         all[:thrill_level] = info.css("span.title_value").text
-      # else
-        # all[:vip_tours] = info.css("title_value").text
 
       end
+
+        all[:slogan] = indiv_ride.css
       all
     end
+  end 
 
 
 
 
-binding.pry
+# binding.pry
 
-    end
-
-
-
-
-
-
-
-
-
-
-
-
-  # def self.first_coaster
-  #   first_coaster = self.new
-  #   first_coaster.name = "Rollie Pollie"
-  #   first_coaster.speed = "70"
-  #   first_coaster.description = "Outlaws Blackjack, Chess and Digger have returned to Frontier Town to reclaim what had been taken by Maverick years before. And they came back with a vengeance. Their creation was so bold that it created a new category of roller coaster: the hyper-hybrid. Steel Vengeance is a world-record breaker with a resume unmatched by any other coaster in the world. Steel Vengeance is the world's longest hybrid coaster that packs in almost 30 seconds of airtime - the most airtime on ANY roller coaster in the world - along with twists, turns and close calls during the 2 minute, 30 second ride. Drop 200 feet at 90 degrees and topple through 4 head-over-boots inversions through wood, steel and mayhem. Saddle up for the ride of your life and try to keep your wits about you. Cedar Point's roller coaster legacy continues...Frontier Town will never be the same."
-  #   first_coaster.min_height = "48"
-  #   first_coaster.duration = "2"
-  #
-  #   first_coaster
-  # end
-  #
-  # def self.second_coaster
-  #   second_coaster = self.new
-  #   second_coaster.name = "Thomas the Train"
-  #   second_coaster.speed = "10"
-  #   second_coaster.description = "Fun for the whole family"
-  #   second_coaster.min_height = "50"
-  #   second_coaster.duration = "3"
-  #
-  #   second_coaster
-  # end
 end
