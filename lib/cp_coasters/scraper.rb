@@ -4,16 +4,16 @@ class CpCoasters::Scraper
   # first page = name, short description, disclaimer, url
   # second page = min_height, thrill_level, slogan
 
-  def self.first_page
+  # def self.first_page
 
-    kennywood = Nokogiri::HTML(open("https://www.kennywood.com/attractions"))
-
-    disclaimer = kennywood.css("div.pcore2_tile_copy").css("i").text
-    short_description = kennywood.css("div.pcore2_tile_copy").css("p").text
-    name = kennywood.css("div.pcore2_tile_copy").css("h2").text
-    url =
-
-  end
+  #   kennywood = Nokogiri::HTML(open("https://www.kennywood.com/attractions"))
+  #
+  #   disclaimer = kennywood.css("div.pcore2_tile_copy").css("i").text
+  #   short_description = kennywood.css("div.pcore2_tile_copy").css("p").text
+  #   name = kennywood.css("div.pcore2_tile_copy").css("h2").text
+  #   url = kennywood.css()
+  #
+  # end
 
   def self.second_page(url)
 
@@ -29,14 +29,15 @@ class CpCoasters::Scraper
 
       end
 
-        all[:slogan] = indiv_ride.css
+      all[:slogan] = indiv_ride.css("div.container").css("h2").first.text
+
       all
     end
-  end 
+  # end
 
 
 
 
-# binding.pry
+binding.pry
 
 end
