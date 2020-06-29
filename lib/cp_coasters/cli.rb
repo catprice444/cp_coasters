@@ -1,11 +1,13 @@
 class CpCoasters::CLI
 
   def call
+    CpCoasters::Coasters.new
     puts "Welcome to Kennywood!"
     rollercoasters
     # CpCoasters::Coasters.done
   end
 #
+
   def rollercoasters
       puts ""
       puts "Which Rollercoaster would you like to learn more about? Enter a number between 1-48."
