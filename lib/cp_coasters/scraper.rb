@@ -1,33 +1,30 @@
 class CpCoasters::Scraper
-  attr_accessor :name, :url, :min_height, :thrill_level, :other, :disclaimer, :description, :about
+  attr_accessor :name, :profile_url, :min_height, :thrill_level, :other, :disclaimer, :description, :about
 
   #first page = name
   # second_page = min_height, thrill_level, other, disclaimer, description
 
-  @@all = []
+  def self.ride
+    kennywood = Nokogiri::HTML(open("https://www.kennywood.com/attractions"))
 
-  def self.all_rides
-  @@all << self.indiv_ride
-  end
+    # indiv_ride = self.new
 
-  def self.indiv_ride
-
-  kennywood = Nokogiri::HTML(open("https://www.kennywood.com/attractions"))
-
-    about = kennywood.css("div.pcore_tiles_attribicons").each {|all| all['#text']}
+    kennywood.each do |park|
+    # indiv_ride.about = kennywood.css("div.pcore_tiles_attribicons").each {|all| all['#text']}
       # min_height =
       # thrill_level =
       # other =
-
-    disclaimer = kennywood.css("div.pcore2_tile_copy").css("i").text
-
+    # disclaimer = kennywood.css("div.pcore2_tile_copy").css("i").text
     description = kennywood.css("div.pcore2_tile_copy").css("p").text
-
     name = kennywood.css("div.pcore2_tile_copy").css("h2").text
-
-    url = kennywood.css('div.pcore2_tile_copy a').map { |link| link['href'] }
-
   end
+
+    CpCoasters::Coasters.new(name, description)
+  end
+
+  # def profile_url
+  #   @url = kennywood.css('div.pcore2_tile_copy a').map { |link| link['href'] }
+  # end
 
 # binding.pry
 
