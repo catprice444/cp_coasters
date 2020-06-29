@@ -1,43 +1,34 @@
 class CpCoasters::Scraper
-  attr_accessor :name, :short_description, :disclaimer, :url, :min_height, :thrill_level, :slogan
+  attr_accessor :name, :url, :min_height, :thrill_level, :other, :disclaimer, :description, :about
 
-  # first page = name, short description, disclaimer, url
-  # second page = min_height, thrill_level, slogan
+  #first page = name
+  # second_page = min_height, thrill_level, other, disclaimer, description
 
-  # def self.first_page
+  @@all = []
 
-  #   kennywood = Nokogiri::HTML(open("https://www.kennywood.com/attractions"))
-  #
-  #   disclaimer = kennywood.css("div.pcore2_tile_copy").css("i").text
-  #   short_description = kennywood.css("div.pcore2_tile_copy").css("p").text
-  #   name = kennywood.css("div.pcore2_tile_copy").css("h2").text
-  #   url = kennywood.css()
-  #
-  # end
+  def self.all_rides
+  @@all << self.indiv_ride
+  end
 
-  def self.second_page(url)
+  def self.indiv_ride
 
-    indiv_ride = Nokogiri::HTML(open("url"))
+  kennywood = Nokogiri::HTML(open("https://www.kennywood.com/attractions"))
 
-    all = {}
-    indiv_ride.css("div.default_button").each do |info|
-      if info.css("span.title_attribute").text.include?("Minimum Height")
-        all[:min_height] = info.css("span.title_value").text
+    about = kennywood.css("div.pcore_tiles_attribicons").each {|all| all['#text']}
+      # min_height =
+      # thrill_level =
+      # other =
 
-      elsif info.css("span.title_attribute").text.include?("Thrill Level")
-        all[:thrill_level] = info.css("span.title_value").text
+    disclaimer = kennywood.css("div.pcore2_tile_copy").css("i").text
 
-      end
+    description = kennywood.css("div.pcore2_tile_copy").css("p").text
 
-      all[:slogan] = indiv_ride.css("div.container").css("h2").first.text
+    name = kennywood.css("div.pcore2_tile_copy").css("h2").text
 
-      all
-    end
-  # end
+    url = kennywood.css('div.pcore2_tile_copy a').map { |link| link['href'] }
 
+  end
 
-
-
-binding.pry
+# binding.pry
 
 end
